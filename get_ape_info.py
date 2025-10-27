@@ -35,13 +35,14 @@ def get_ape_info(ape_id):
       token_URI = token_URI.replace("ipfs://", "https://ipfs.io/ipfs/")
 
     data_requests = requests.get(token_URI)
+    data_requests.raise_for_status()
     metadata = data_requests.json()
 
     image = metadata.get("image", "")
 
     eyes = ""
     for i in metadata.get("attributes", []):
-      if i.get("trait_type") == "eyes":
+      if i.get("trait_type") == "Eyes":
         eyes = i.get("value", "")
         break
 
@@ -57,5 +58,4 @@ def get_ape_info(ape_id):
 
 
 if __name__ == "__main__":
-  print("Ape", get_ape_info(1))
-
+  print("Ape", get_ape_info(7355))
