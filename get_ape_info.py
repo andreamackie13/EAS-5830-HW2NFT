@@ -41,7 +41,7 @@ def get_ape_info(ape_id):
 
     eyes = ""
     for i in metadata.get("attributes", []):
-      if i.get("trait_type") == "Eyes":
+      if i.get("trait_type") == "eyes":
         eyes = i.get("value", "")
         break
 
